@@ -1,0 +1,11 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-cicd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello
+        run: echo "Hello World!"
