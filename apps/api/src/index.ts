@@ -1,7 +1,7 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import { todoRouter } from "./modules/todo/router";
+import { todoRouter } from "./modules/todo/router.js";
 
 const PORT = Number(process.env.PORT) || 8000;
 
