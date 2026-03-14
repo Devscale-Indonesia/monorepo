@@ -6,23 +6,23 @@ import { todoRouter } from "./modules/todo/router.js";
 const PORT = Number(process.env.PORT) || 8000;
 
 const app = new Hono()
-  .use(
-    cors({
-      origin: "*",
-      allowMethods: ["GET", "POST", "PATCH", "DELETE"],
-      allowHeaders: ["Content-Type"],
-    }),
-  )
-  .route("/todos", todoRouter);
+	.use(
+		cors({
+			origin: "*",
+			allowMethods: ["GET", "POST", "PATCH", "DELETE"],
+			allowHeaders: ["Content-Type"],
+		}),
+	)
+	.route("/todos", todoRouter);
 
 export type AppType = typeof app;
 
 serve(
-  {
-    fetch: app.fetch,
-    port: PORT,
-  },
-  (info) => {
-    console.log(`Server is running on http://localhost:${info.port}`);
-  },
+	{
+		fetch: app.fetch,
+		port: PORT,
+	},
+	(info) => {
+		console.log(`Server is running on http://localhost:${info.port}`);
+	},
 );

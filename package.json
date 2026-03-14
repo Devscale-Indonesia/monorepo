@@ -1,25 +1,27 @@
 {
-  "name": "monorepo-cicd",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "lint": "pnpx @biomejs/biome check",
-    "lint:fix": "pnpx @biomejs/biome check --write --unsafe",
-    "dev": "pnpm run --parallel --filter=api --filter=platform dev",
-    "build": "pnpm run --parallel --filter=api --filter=platform build",
-    "start": "pnpm run --parallel --filter=api --filter=platform start",
-    "db:migrate": "pnpm run --filter=api db:migrate",
-    "db:studio": "pnpm run --filter=api db:studio",
-    "db:generate": "pnpm run --filter=api db:generate"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv-cli": "^11.0.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.7"
-  }
+	"name": "monorepo-cicd",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"lint": "pnpx @biomejs/biome check",
+		"lint:fix": "pnpx @biomejs/biome check --write --unsafe",
+		"dev": "pnpm run --parallel --filter=api --filter=platform dev",
+		"build": "pnpm run --parallel --filter=api --filter=platform build",
+		"start": "pnpm run --parallel --filter=api --filter=platform start",
+		"db:migrate": "pnpm run --filter=api db:migrate",
+		"db:studio": "pnpm run --filter=api db:studio",
+		"db:generate": "pnpm run --filter=api db:generate",
+		"prepare": "husky"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv-cli": "^11.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.7",
+		"husky": "^9.1.7"
+	}
 }
