@@ -10,6 +10,7 @@
 		"build": "pnpm run --parallel --filter=api --filter=platform build",
 		"start": "pnpm run --parallel --filter=api --filter=platform start",
 		"db:migrate": "pnpm run --filter=api db:migrate",
+		"db:deploy": "pnpm run --filter=api db:deploy",
 		"db:studio": "pnpm run --filter=api db:studio",
 		"db:generate": "pnpm run --filter=api db:generate",
 		"prepare": "husky"
