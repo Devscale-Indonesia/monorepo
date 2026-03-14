@@ -24,6 +24,8 @@ jobs:
       - name: Deploy App
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} '
+            source ~/.bashrc
+            export PATH="$HOME/.nvm/versions/node/v24.14.0/bin:$PATH"
             cd live
             git pull
             pnpm db:deploy
