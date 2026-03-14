@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-cicd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Setup PNPM
+        run: npm install -g pnpm@latest
+      - name: Setup Dependency
+        run: pnpm install --frozen-lockfile
+      - name: Run Linter
+        run: pnpm lint
+      - name: SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Deploy App
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} '
+            cd live
+            git pull
+            pnpm db:deploy
+            pnpm run build
+            pm2 restart all
+          '
