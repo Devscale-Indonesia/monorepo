@@ -21,10 +21,12 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Access private repo or remote server
+      - name: Deploy to production server
         run: |
-          cd live/
-          git pull
-          pnpm db:deploy
-          pnpm run build
-          pm2 restart all
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} '
+            cd live/
+            git pull
+            pnpm db:deploy
+            pnpm run build
+            pm2 restart all
+          '
