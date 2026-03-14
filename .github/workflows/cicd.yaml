@@ -7,5 +7,11 @@ jobs:
   test-cicd:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello
-        run: echo "Hello World!"
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Setup PNPM
+        run: npm install -g pnpm@latest
+      - name: Setup Dependency
+        run: pnpm install --frozen-lockfile
