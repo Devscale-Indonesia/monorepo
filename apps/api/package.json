@@ -6,6 +6,7 @@
 		"build": "tsc",
 		"start": "pnpm with-env tsx src/index.ts",
 		"db:migrate": "pnpm with-env prisma migrate dev",
+		"db:deploy": "pnpm with-env prisma migrate deploy",
 		"db:studio": "pnpm with-env prisma studio",
 		"db:generate": "pnpm with-env prisma generate",
 		"with-env": "dotenv -e ../../.env --"

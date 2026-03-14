@@ -22,4 +22,9 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Access private repo or remote server
-        run: "echo 'Hello World'"
+        run: |
+          cd live/
+          git pull
+          pnpm db:deploy
+          pnpm run build
+          pm2 restart all
